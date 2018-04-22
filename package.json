@@ -1,0 +1,23 @@
+{
+  "name": "@reflar/create-flarum-extension",
+  "version": "1.1.0",
+  "description": "A Flarum extension generator by ReFlar",
+  "main": "src/index.js",
+  "bin": "src/main",
+  "author": {
+    "name": "David Sevilla Martín",
+    "email": "david.s@redevs.org",
+    "url": "https://github.com/datitisev"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "args": "^4.0.0",
+    "inquirer": "^5.2.0",
+    "inquirer-autocomplete-prompt": "^0.12.2",
+    "mem-fs": "^1.1.3",
+    "mem-fs-editor": "^4.0.0",
+    "ora": "^2.0.0",
+    "spdx-license-list": "^4.0.0",
+    "yosay": "^2.0.2"
+  }
+}
