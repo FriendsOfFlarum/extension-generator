@@ -9,6 +9,9 @@
     "email": "david.s@redevs.org",
     "url": "https://github.com/datitisev"
   },
+  "engines" : {
+    "node" : ">=6.4.0"
+  },
   "license": "MIT",
   "dependencies": {
     "args": "^4.0.0",

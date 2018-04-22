@@ -65,8 +65,8 @@ new Promise((resolve, reject) => {
     {
       name: 'namespace',
       message: 'Package namespace:',
-      validate: (s) => /^([a-zA-Z]+)\\([a-zA-Z]+)$/.test(s) || 'Invalid namespace format, Author\\ExtensionName',
-      filter: (str) => str.split('\\').map(s => s[0].toUpperCase() + s.slice(1)).join('\\'),
+      validate: (s) => /^([a-zA-Z]+)\\([a-zA-Z]+)$/.test(s.trim()) || 'Invalid namespace format, Author\\ExtensionName',
+      filter: (str) => str && str.split('\\').map(s => s[0].toUpperCase() + s.slice(1)).join('\\'),
     },
     {
       name: 'authorName',
@@ -89,6 +89,7 @@ new Promise((resolve, reject) => {
     {
       name: 'extensionName',
       message: 'Extension name:',
+      validate: (str) => !!str.trim() || 'The extension name is required',
       filter: (str) => str.split(' ').map(s => s.length > 3 ? s[0].toUpperCase() + s.slice(1) : s).join(' '),
     },
     {
@@ -123,10 +124,10 @@ new Promise((resolve, reject) => {
   process.stdout.write('\n');
   const spinner = ora('Setting up extension...').start();
 
-  const tpl = {
+  const tpl = Object.assign(data, {
     packageNamespace: data.namespace.replace(/\\/, '\\\\'),
-    ...data,
-  }
+  });
+
   const mv = (from, to) => fs.move(path.resolve(dir, from), path.resolve(dir, to));
   const del = (f) => fs.delete(path.resolve(dir, f));
   const boilerplate = path.resolve(__dirname, '../boilerplate/**');
@@ -144,6 +145,7 @@ new Promise((resolve, reject) => {
     del('less/app.less');
     del('js/forum');
   }
+  if (!tpl.admin && !tpl.forum && !tpl.useLocale) del('src');
 
   const license = require(`spdx-license-list/licenses/${data.license}`);
   fs.write(path.resolve(dir, 'LICENSE.md'), license.licenseText);

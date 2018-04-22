@@ -26,10 +26,10 @@ class AddClientAssets
      */
     public function subscribe(Dispatcher $events)
     {
-        $events->listen(ConfigureWebApp::class, [$this, 'configureWebApp']);
+        <% if (admin && forum) { %>$events->listen(ConfigureWebApp::class, [$this, 'configureWebApp']);<% } %>
         <% if (useLocale) { %>$events->listen(ConfigureLocales::class, [$this, 'addLocales']);<% } %>
     }
-
+    <% if (admin && forum) { %>
     /**
      * Modifies the client view for forum/admin.
      *
@@ -53,7 +53,7 @@ class AddClientAssets
             $event->addBootstrapper('<%= packageName %>/main');
         }<% } %>
     }
-    <% if (useLocale) { %>
+    <% } %><% if (useLocale) { %>
     /**
      * Provides i18n files.
      *

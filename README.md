@@ -21,7 +21,7 @@ create-flarum-extension [dir]
 ## Creating an Extension
 
 
-**You’ll need to have Node >= 8 on your local development machine (but it’s not required on the server).** You can use [n](https://www.npmjs.com/package/n) to interactively manager your node versions.
+**You’ll need to have Node >= 6.4.0 on your local development machine.** You can use [n](https://www.npmjs.com/package/n) to interactively manager your node versions.
 
 To create a new app, run a single command:
 
