@@ -1,5 +1,8 @@
 # Create Flarum Extension by ReFlar
 
+[![npm version](https://img.shields.io/npm/v/@reflar/create-flarum-extension.svg)](https://www.npmjs.com/package/@reflar/create-flarum-extension) ![node](https://img.shields.io/node/v/@reflar/create-flarum-extension.svg)
+![npm downloads](https://img.shields.io/npm/dt/@reflar/create-flarum-extension.svg)
+
 Create a Flarum extension from a boilerplate in minutes!
 
 [![asciicast](https://asciinema.org/a/177728.png)](https://asciinema.org/a/177728)
