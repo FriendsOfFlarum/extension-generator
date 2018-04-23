@@ -4,13 +4,16 @@
   "description": "A Flarum extension generator by ReFlar",
   "main": "src/index.js",
   "bin": "src/main",
+  "scripts": {
+    "lint": "prettier --single-quote --trailing-comma es5 --semi --write 'src/index.js'"
+  },
   "author": {
     "name": "David Sevilla Martín",
     "email": "david.s@redevs.org",
     "url": "https://github.com/datitisev"
   },
-  "engines" : {
-    "node" : ">=6.4.0"
+  "engines": {
+    "node": ">=6.4.0"
   },
   "license": "MIT",
   "dependencies": {
@@ -22,5 +25,8 @@
     "ora": "^2.0.0",
     "spdx-license-list": "^4.0.0",
     "yosay": "^2.0.2"
+  },
+  "devDependencies": {
+    "prettier": "1.12.1"
   }
 }
