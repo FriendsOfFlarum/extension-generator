@@ -8,10 +8,17 @@ A [Flarum](http://flarum.org) extension. <%= packageDescription %>
 
 ### Installation
 
-Install it with composer:
+Use [Bazaar](https://discuss.flarum.org/d/5151-flagrow-bazaar-the-extension-marketplace) or install manually with composer:
 
 ```sh
 composer require <%= packageName %>
+```
+
+### Updating
+
+```sh
+composer update <%= packageName %>
+php flarum cache:clear
 ```
 
 ### Links
