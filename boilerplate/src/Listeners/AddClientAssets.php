@@ -19,6 +19,7 @@ use Illuminate\Contracts\Events\Dispatcher;
 
 class AddClientAssets
 {
+
     /**
      * Subscribes to the Flarum events.
      *
@@ -40,7 +41,7 @@ class AddClientAssets
         <% if (admin) { %>if ($event->isAdmin()) {
             $event->addAssets([
                 <% if (useJs) { %>__DIR__.'/../../js/admin/dist/extension.js',<% } %>
-                <% if (useCss) { %>__DIR__.'/../../less/admin.less',<% } %>
+                <% if (useCss) { %><%- resourcesFolder %>/less/admin.less',<% } %>
             ]);
             $event->addBootstrapper('<%= packageName %>/main');
         }<% } %>
@@ -48,7 +49,7 @@ class AddClientAssets
         <% if (forum) { %>if ($event->isForum()) {
             $event->addAssets([
                 <% if (useJs) { %>__DIR__.'/../../js/forum/dist/extension.js',<% } %>
-                <% if (useCss) { %>__DIR__.'/../../less/app.less',<% } %>
+                <% if (useCss) { %><%- resourcesFolder %>/less/app.less',<% } %>
             ]);
             $event->addBootstrapper('<%= packageName %>/main');
         }<% } %>
@@ -61,7 +62,7 @@ class AddClientAssets
      */
     public function addLocales(ConfigureLocales $event)
     {
-        foreach (new DirectoryIterator(__DIR__.'/../../locale') as $file) {
+        foreach (new DirectoryIterator(<%- resourcesFolder %>/locale') as $file) {
             if ($file->isFile() && in_array($file->getExtension(), ['yml', 'yaml'])) {
                 $event->locales->addTranslations($file->getBasename('.'.$file->getExtension()), $file->getPathname());
             }

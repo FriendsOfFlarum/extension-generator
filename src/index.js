@@ -119,6 +119,12 @@ new Promise((resolve, reject) => {
       type: 'confirm',
       when: (answers) => answers.admin || answers.forum,
     },
+    {
+      name: 'resourcesFolder',
+      message: 'Move LESS & locale into resources folder?',
+      type: 'confirm',
+      when: (answers) => answers.useLocale || answers.useCss,
+    },
   ]);
 }).then(data => {
   process.stdout.write('\n');
@@ -126,6 +132,7 @@ new Promise((resolve, reject) => {
 
   const tpl = Object.assign(data, {
     packageNamespace: data.namespace.replace(/\\/, '\\\\'),
+    resourcesFolder: `__DIR__.'/../..${data.resourcesFolder ? '/resources' : ''}`
   });
 
   const mv = (from, to) => fs.move(path.resolve(dir, from), path.resolve(dir, to));
@@ -134,6 +141,7 @@ new Promise((resolve, reject) => {
 
   fs.copyTpl(boilerplate, dir, tpl);
   mv('gitignore', '.gitignore');
+
   if (!tpl.useLocale) del('locale');
   if (!tpl.useJs) del('js');
   if (!tpl.useCss) del('less');
@@ -146,6 +154,10 @@ new Promise((resolve, reject) => {
     del('js/forum');
   }
   if (!tpl.admin && !tpl.forum && !tpl.useLocale) del('src');
+  if (tpl.resourcesFolder) {
+    if (tpl.useCss) mv('less', 'resources');
+    if (tpl.useLocale) mv('locale', 'resources')
+  } else del('resources');
 
   const license = require(`spdx-license-list/licenses/${data.license}`);
   fs.write(path.resolve(dir, 'LICENSE.md'), license.licenseText);
