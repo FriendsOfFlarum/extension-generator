@@ -4,6 +4,20 @@
   "description": "A Flarum extension generator by ReFlar",
   "main": "src/index.js",
   "bin": "src/main",
+  "license": "MIT",
+  "keywords": [
+    "flarum",
+    "generator",
+    "extension-generator",
+    "boilerplate",
+    "reflar",
+    "flarum-extension"
+  ],
+  "homepage": "https://github.com/ReFlar/extension-generator#readme",
+  "repository": "github:ReFlar/extension-generator",
+  "bugs": {
+    "url": "https://github.com/ReFlar/extension-generator/issues"
+  },
   "scripts": {
     "lint": "prettier --single-quote --trailing-comma es5 --semi --write 'src/index.js'"
   },
@@ -15,7 +29,6 @@
   "engines": {
     "node": ">=6.4.0"
   },
-  "license": "MIT",
   "dependencies": {
     "args": "^4.0.0",
     "inquirer": "^5.2.0",
