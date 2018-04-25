@@ -28,8 +28,10 @@ inquirer.registerPrompt(
   require('inquirer-autocomplete-prompt')
 );
 
+let spinner;
+
 new Promise((resolve, reject) => {
-  const spinner = ora('Starting...').start();
+  spinner = ora('Starting...').start();
   filesystem.readdir(dir, (err, files = []) => {
     spinner.stop();
     console.log(yosay('Welcome to a Flarum extension generator\n\n- ReFlar'));
@@ -158,7 +160,7 @@ new Promise((resolve, reject) => {
   })
   .then(data => {
     process.stdout.write('\n');
-    const spinner = ora('Setting up extension...').start();
+    spinner = ora('Setting up extension...').start();
 
     const tpl = Object.assign(data, {
       packageNamespace: data.namespace.replace(/\\/, '\\\\'),
@@ -169,6 +171,8 @@ new Promise((resolve, reject) => {
 
     const mv = (from, to) =>
       fs.move(path.resolve(dir, from), path.resolve(dir, to));
+    const rename = (from, to) =>
+        filesystem.renameSync(path.resolve(dir, from), path.resolve(dir, to));
     const del = f => fs.delete(path.resolve(dir, f));
     const boilerplate = path.resolve(__dirname, '../boilerplate/**');
 
@@ -183,20 +187,30 @@ new Promise((resolve, reject) => {
       del('js/admin');
     }
     if (!tpl.forum) {
-      del('less/app.less');
-      del('js/forum');
+      if (tpl.useCss) del('less/app.less');
+      if (tpl.useJs) del('js/forum');
     }
     if (!tpl.admin && !tpl.forum && !tpl.useLocale) del('src');
     if (tpl.resourcesFolder) {
-      if (tpl.useCss) mv('less', 'resources');
-      if (tpl.useLocale) mv('locale', 'resources');
+      if (tpl.useCss) {
+        if (tpl.admin) mv('less/admin.less', 'resources/less/admin.less');
+        if (tpl.forum) mv('less/app.less', 'resources/less/app.less');
+        del('less');
+      }
+      if (tpl.useLocale) mv('locale/**', 'resources/locale');
     } else del('resources');
 
     const license = require(`spdx-license-list/licenses/${data.license}`);
     fs.write(path.resolve(dir, 'LICENSE.md'), license.licenseText);
 
-    fs.commit(err => {
-      if (err) return spinner.fail(err);
-      spinner.succeed(`Successfully set up Flarum extension in ${dir}`);
+    return new Promise((resolve, reject) => {
+      fs.commit(err => {
+        if (err) return reject(err);
+        resolve();
+      });
     });
-  });
+  })
+  .then(() => {
+    spinner.succeed(`Successfully set up Flarum extension in ${dir}`);
+  })
+  .catch(err => spinner && spinner.fail(err));
