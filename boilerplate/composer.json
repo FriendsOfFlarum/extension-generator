@@ -18,7 +18,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "<%= packageNamespace %>": "src/"
+      "<%= packageNamespace %>\\": "src/"
     }
   },
   "extra": {
