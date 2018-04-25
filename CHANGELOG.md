@@ -1,3 +1,15 @@
+<a name="1.2.1"></a>
+## [1.2.1](https://github.com/ReFlar/extension-generator/compare/v1.2.0...v1.2.1) (2018-04-25)
+
+
+### Bug Fixes
+
+* **boilerplate:** fix incorrect namespace of AddClientAssets ([3d47be2](https://github.com/ReFlar/extension-generator/commit/3d47be2))
+* **boilerplate:** fix psr4 package namespace ([58bc5a1](https://github.com/ReFlar/extension-generator/commit/58bc5a1))
+* **generator:** fix resources folder error ([28d20ea](https://github.com/ReFlar/extension-generator/commit/28d20ea))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/ReFlar/extension-generator/compare/v1.1.1...v1.2.0) (2018-04-23)
 
