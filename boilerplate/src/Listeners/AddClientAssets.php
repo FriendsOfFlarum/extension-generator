@@ -10,7 +10,7 @@
  *  file that was distributed with this source code.
  */
 
-namespace <%= namespace %>\Listener;
+namespace <%= namespace %>\Listeners;
 
 use DirectoryIterator;
 use Flarum\Event\ConfigureLocales;
