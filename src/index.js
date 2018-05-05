@@ -15,8 +15,7 @@ args
     'The root directory in which to create the Flarum extension',
     process.cwd(),
     p => path.resolve(p)
-  )
-  .option('debug', 'Show debug output');
+  );
 
 const flags = args.parse(process.argv);
 const dir = (args.sub[0] && path.resolve(args.sub[0])) || flags.path;
