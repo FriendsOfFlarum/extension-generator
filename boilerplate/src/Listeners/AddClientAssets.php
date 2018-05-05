@@ -27,10 +27,10 @@ class AddClientAssets
      */
     public function subscribe(Dispatcher $events)
     {
-        <% if (admin && forum) { %>$events->listen(ConfigureWebApp::class, [$this, 'configureWebApp']);<% } %>
+        <% if (admin || forum) { %>$events->listen(ConfigureWebApp::class, [$this, 'configureWebApp']);<% } %>
         <% if (useLocale) { %>$events->listen(ConfigureLocales::class, [$this, 'addLocales']);<% } %>
     }
-    <% if (admin && forum) { %>
+    <% if (admin || forum) { %>
     /**
      * Modifies the client view for forum/admin.
      *
