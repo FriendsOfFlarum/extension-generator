@@ -9,13 +9,12 @@ const ora = require('ora');
 
 const licenseList = Array.from(require('spdx-license-list/simple'));
 
-args
-  .option(
-    'path',
-    'The root directory in which to create the Flarum extension',
-    process.cwd(),
-    p => path.resolve(p)
-  );
+args.option(
+  'path',
+  'The root directory in which to create the Flarum extension',
+  process.cwd(),
+  p => path.resolve(p)
+);
 
 const flags = args.parse(process.argv);
 const dir = (args.sub[0] && path.resolve(args.sub[0])) || flags.path;
@@ -171,7 +170,7 @@ new Promise((resolve, reject) => {
     const mv = (from, to) =>
       fs.move(path.resolve(dir, from), path.resolve(dir, to));
     const rename = (from, to) =>
-        filesystem.renameSync(path.resolve(dir, from), path.resolve(dir, to));
+      filesystem.renameSync(path.resolve(dir, from), path.resolve(dir, to));
     const del = f => fs.delete(path.resolve(dir, f));
     const boilerplate = path.resolve(__dirname, '../boilerplate/**');
 
