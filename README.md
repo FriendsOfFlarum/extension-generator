@@ -5,7 +5,7 @@
 
 Create a Flarum extension from a boilerplate in minutes!
 
-[![asciicast](https://asciinema.org/a/177728.png)](https://asciinema.org/a/177728)
+[![asciicast](https://asciinema.org/a/179886.png)](https://asciinema.org/a/179886)
 
 ## Quick Overview
 
