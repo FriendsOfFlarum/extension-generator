@@ -15,5 +15,5 @@ namespace <%= namespace %>;
 use Illuminate\Contracts\Events\Dispatcher;
 
 return function (Dispatcher $events) {
-    <% if (admin && forum && useLocale) { %>$events->subscribe(Listeners\AddClientAssets::class);<% } %>
+    <% if (admin || forum || useLocale) { %>$events->subscribe(Listeners\AddClientAssets::class);<% } %>
 };
