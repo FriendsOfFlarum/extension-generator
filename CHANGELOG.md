@@ -1,3 +1,14 @@
+<a name="1.2.2"></a>
+## [1.2.2](https://github.com/ReFlar/extension-generator/compare/v1.2.1...v1.2.2) (2018-05-05)
+
+
+### Bug Fixes
+
+* **boilerplate:** assets listener doesn't register when necessary ([f4e7446](https://github.com/ReFlar/extension-generator/commit/f4e7446)), closes [#4](https://github.com/ReFlar/extension-generator/issues/4)
+* **boilerplate:** assets not registering if forum or admin are skipped ([c66e351](https://github.com/ReFlar/extension-generator/commit/c66e351)), closes [#3](https://github.com/ReFlar/extension-generator/issues/3)
+
+
+
 <a name="1.2.1"></a>
 ## [1.2.1](https://github.com/ReFlar/extension-generator/compare/v1.2.0...v1.2.1) (2018-04-25)
 
