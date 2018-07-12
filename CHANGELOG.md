@@ -1,3 +1,14 @@
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/ReFlar/extension-generator/compare/v1.2.2...v1.3.0) (2018-07-12)
+
+
+### Features
+
+* **bin:** add `cfe` as an alias to `create-flarum-extension` ([8d28f5c](https://github.com/ReFlar/extension-generator/commit/8d28f5c)), closes [#6](https://github.com/ReFlar/extension-generator/issues/6)
+* **generator:** add examples next to prompted questions ([a46970a](https://github.com/ReFlar/extension-generator/commit/a46970a)), closes [#5](https://github.com/ReFlar/extension-generator/issues/5)
+
+
+
 <a name="1.2.2"></a>
 ## [1.2.2](https://github.com/ReFlar/extension-generator/compare/v1.2.1...v1.2.2) (2018-05-05)
 
