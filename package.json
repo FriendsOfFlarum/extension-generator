@@ -3,7 +3,10 @@
   "version": "1.2.2",
   "description": "A Flarum extension generator by ReFlar",
   "main": "src/index.js",
-  "bin": "src/main",
+  "bin": {
+    "create-flarum-extension": "src/main",
+    "cfe": "src/main"
+  },
   "license": "MIT",
   "keywords": [
     "flarum",
