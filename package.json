@@ -30,16 +30,16 @@
     "node": ">=6.4.0"
   },
   "dependencies": {
-    "args": "^4.0.0",
-    "inquirer": "^5.2.0",
+    "args": "^5.0.0",
+    "inquirer": "^6.0.0",
     "inquirer-autocomplete-prompt": "^0.12.2",
     "mem-fs": "^1.1.3",
-    "mem-fs-editor": "^4.0.1",
+    "mem-fs-editor": "^5.1.0",
     "ora": "^2.1.0",
     "spdx-license-list": "^4.0.0",
     "yosay": "^2.0.2"
   },
   "devDependencies": {
-    "prettier": "1.12.1"
+    "prettier": "^1.13.7"
   }
 }
