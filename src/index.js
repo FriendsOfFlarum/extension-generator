@@ -6,6 +6,7 @@ const memFs = require('mem-fs');
 const editor = require('mem-fs-editor');
 const yosay = require('yosay');
 const ora = require('ora');
+const { reset } = require('chalk');
 
 const licenseList = Array.from(require('spdx-license-list/simple'));
 
@@ -63,10 +64,10 @@ new Promise((resolve, reject) => {
     return inquirer.prompt([
       {
         name: 'packageName',
-        message: 'Package:',
+        message: `Package ${reset.dim('(vendor/extension-name)')}:`,
         validate: s =>
           /^([a-zA-Z-]{2,})\/([a-zA-Z-]{2,})$/.test(s.trim()) ||
-          'Invalid package name format, author/extension-name',
+          'Invalid package name format, vendor/extension-name',
         filter: s => s.toLowerCase(),
       },
       {
@@ -75,10 +76,10 @@ new Promise((resolve, reject) => {
       },
       {
         name: 'namespace',
-        message: 'Package namespace:',
+        message: `Package namespace ${reset.dim('(Vendor\\ExtensionName)')}:`,
         validate: s =>
           /^([a-zA-Z]+)\\([a-zA-Z]+)$/.test(s.trim()) ||
-          'Invalid namespace format, Author\\ExtensionName',
+          'Invalid namespace format, Vendor\\ExtensionName',
         filter: str =>
           str &&
           str

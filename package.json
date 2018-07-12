@@ -43,6 +43,7 @@
     "yosay": "^2.0.2"
   },
   "devDependencies": {
+    "chalk": "^2.4.1",
     "prettier": "^1.13.7"
   }
 }
