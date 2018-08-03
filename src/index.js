@@ -67,7 +67,7 @@ new Promise((resolve, reject) => {
         message: `Package ${reset.dim('(vendor/extension-name)')}:`,
         validate: s =>
           /^([a-zA-Z-]{2,})\/([a-zA-Z-]{2,})$/.test(s.trim()) ||
-          'Invalid package name format, vendor/extension-name',
+          'Invalid package name format',
         filter: s => s.toLowerCase(),
       },
       {
@@ -79,7 +79,7 @@ new Promise((resolve, reject) => {
         message: `Package namespace ${reset.dim('(Vendor\\ExtensionName)')}:`,
         validate: s =>
           /^([a-zA-Z]+)\\([a-zA-Z]+)$/.test(s.trim()) ||
-          'Invalid namespace format, Vendor\\ExtensionName',
+          'Invalid namespace format',
         filter: str =>
           str &&
           str
@@ -183,17 +183,20 @@ new Promise((resolve, reject) => {
     if (!tpl.useCss) del('less');
     if (!tpl.admin) {
       del('less/admin.less');
-      del('js/admin');
+      del('js/src/admin');
+      del('js/admin.js');
     }
     if (!tpl.forum) {
       if (tpl.useCss) del('less/app.less');
-      if (tpl.useJs) del('js/forum');
+      if (tpl.useJs) {
+        del('js/src/forum');
+        del('js/forum.js')
+      }
     }
-    if (!tpl.admin && !tpl.forum && !tpl.useLocale) del('src');
     if (tpl.resourcesFolder) {
       if (tpl.useCss) {
         if (tpl.admin) mv('less/admin.less', 'resources/less/admin.less');
-        if (tpl.forum) mv('less/app.less', 'resources/less/app.less');
+        if (tpl.forum) mv('less/forum.less', 'resources/less/forum.less');
         del('less');
       }
       if (tpl.useLocale) mv('locale/**', 'resources/locale');
@@ -212,4 +215,7 @@ new Promise((resolve, reject) => {
   .then(() => {
     spinner.succeed(`Successfully set up Flarum extension in ${dir}`);
   })
-  .catch(err => spinner && spinner.fail(err));
+  .catch(err => {
+    if (spinner) spinner.fail();
+    console.error(err);
+  });

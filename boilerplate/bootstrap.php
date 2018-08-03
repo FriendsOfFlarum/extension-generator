@@ -14,6 +14,12 @@ namespace <%= namespace %>;
 
 use Illuminate\Contracts\Events\Dispatcher;
 
-return function (Dispatcher $events) {
-    <% if (admin || forum || useLocale) { %>$events->subscribe(Listeners\AddClientAssets::class);<% } %>
-};
+return [
+    <% if (forum) { %>(new Extend\Frontend('forum'))
+        <% if (useJs) { %>->js(__DIR__.'/js/dist/forum.js')<% if (!useCss) { %>,<% } %><% } %>
+        <% if (useCss) { %>->css(__DIR__.'/less/forum.less'),<% } %><% } %>
+    <% if (admin) { %>(new Extend\Frontend('admin'))
+        <% if (useJs) { %>->js(__DIR__.'/js/dist/admin.js')<% if (!useCss) { %>,<% } %><% } %>
+        <% if (useCss) { %>->css(__DIR__.'/less/admin.less'),<% } %><% } %>
+    <% if (useLocale) { %>new Locales(__DIR__ . '/resources/locale')<% } %>
+]
