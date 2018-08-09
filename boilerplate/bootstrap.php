@@ -20,6 +20,6 @@ return [
         <% if (useCss) { %>->css(__DIR__.'/less/forum.less'),<% } %><% } %>
     <% if (admin) { %>(new Extend\Frontend('admin'))
         <% if (useJs) { %>->js(__DIR__.'/js/dist/admin.js')<% if (!useCss) { %>,<% } %><% } %>
-        <% if (useCss) { %>->css(__DIR__.'/less/admin.less'),<% } %><% } %>
-    <% if (useLocale) { %>new Extend\Locales(__DIR__ . '/resources/locale')<% } %>
+        <% if (useCss) { %>->css(__DIR__.'<% if (resourcesFolder) { %>/resources<% } %>/less/admin.less'),<% } %><% } %>
+    <% if (useLocale) { %>new Extend\Locales(__DIR__ . '<% if (resourcesFolder) { %>/resources<% } %>/locale')<% } %>
 ];
