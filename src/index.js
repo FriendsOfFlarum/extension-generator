@@ -166,6 +166,7 @@ new Promise((resolve, reject) => {
       resourcesFolder: `__DIR__.'/../..${
         data.resourcesFolder ? '/resources' : ''
       }`,
+      packageNameValid: data.packageName.replace(/\//, '-'),
     });
 
     const mv = (from, to) =>
