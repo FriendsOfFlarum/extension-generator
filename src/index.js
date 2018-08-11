@@ -166,7 +166,6 @@ new Promise((resolve, reject) => {
       resourcesFolder: `__DIR__.'/../..${
         data.resourcesFolder ? '/resources' : ''
       }`,
-      packageNameValid: data.packageName.replace(/\//, '-'),
     });
 
     const mv = (from, to) =>
@@ -191,7 +190,7 @@ new Promise((resolve, reject) => {
       if (tpl.useCss) del('less/app.less');
       if (tpl.useJs) {
         del('js/src/forum');
-        del('js/forum.js')
+        del('js/forum.js');
       }
     }
     if (tpl.resourcesFolder) {
