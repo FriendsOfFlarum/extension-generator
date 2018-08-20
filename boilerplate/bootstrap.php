@@ -17,9 +17,9 @@ use Flarum\Extend;
 return [
     <% if (forum) { %>(new Extend\Frontend('forum'))
         <% if (useJs) { %>->js(__DIR__.'/js/dist/forum.js')<% if (!useCss) { %>,<% } %><% } %>
-        <% if (useCss) { %>->css(__DIR__.'/less/forum.less'),<% } %><% } %>
+        <% if (useCss) { %>->css(__DIR__.'<%- resourcesFolder %>/less/forum.less'),<% } %><% } %>
     <% if (admin) { %>(new Extend\Frontend('admin'))
         <% if (useJs) { %>->js(__DIR__.'/js/dist/admin.js')<% if (!useCss) { %>,<% } %><% } %>
-        <% if (useCss) { %>->css(__DIR__.'<% if (resourcesFolder) { %>/resources<% } %>/less/admin.less'),<% } %><% } %>
-    <% if (useLocale) { %>new Extend\Locales(__DIR__ . '<% if (resourcesFolder) { %>/resources<% } %>/locale')<% } %>
+        <% if (useCss) { %>->css(__DIR__.'<%- resourcesFolder %>/less/admin.less'),<% } %><% } %>
+    <% if (useLocale) { %>new Extend\Locales(__DIR__ . '<%- resourcesFolder %>/locale')<% } %>
 ];

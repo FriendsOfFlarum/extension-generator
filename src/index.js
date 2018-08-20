@@ -163,9 +163,7 @@ new Promise((resolve, reject) => {
 
     const tpl = Object.assign(data, {
       packageNamespace: data.namespace.replace(/\\/, '\\\\'),
-      resourcesFolder: `__DIR__.'/../..${
-        data.resourcesFolder ? '/resources' : ''
-      }`,
+      resourcesFolder: data.resourcesFolder ? '/resources' : '',
     });
 
     const mv = (from, to) =>
