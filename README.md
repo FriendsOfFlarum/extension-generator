@@ -41,27 +41,24 @@ my-extension
 ├── .gitignore
 ├── bootstrap.php
 ├── composer.json
-├── README.md
 ├── LICENSE.md
+├── README.md
 ├── js
-│  ├── admin
-│  │  ├── Gulpfile.js
-│  │  ├── package.json
-│  │  └── src
-│  │     └── main.js
-│  └── forum
-│     ├── Gulpfile.js
-│     ├── package.json
-│     └── src
-│        └── main.js
-├── less
-│  ├── admin.less
-│  └── app.less
-├── locale
-│  └── en.yml
-└── src
-   └── Listeners
-      └── AddClientAssets.php
+│  ├── admin.js
+│  ├── forum.js
+│  ├── package.json
+│  ├── src
+│  │  ├── admin
+│  │  │  └── index.js
+│  │  └── forum
+│  │     └── index.js
+│  └── webpack.config.js
+└── resources
+   ├── less
+   │  ├── admin.less
+   │  └── forum.less
+   └── locale
+      └── en.yml
 ```
 
 ## Flarum Resources
