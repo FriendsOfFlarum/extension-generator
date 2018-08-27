@@ -37,7 +37,6 @@ new Promise((resolve, reject) => {
 })
   .then(
     exists =>
-      exists &&
       prompts(
         [
           {
