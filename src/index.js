@@ -1,7 +1,7 @@
 const path = require('path');
 const filesystem = require('fs');
 const args = require('args');
-const inquirer = require('inquirer');
+const prompts = require('prompts');
 const memFs = require('mem-fs');
 const editor = require('mem-fs-editor');
 const yosay = require('yosay');
@@ -22,140 +22,148 @@ const dir = (args.sub[0] && path.resolve(args.sub[0])) || flags.path;
 const store = memFs.create();
 const fs = editor.create(store);
 
-inquirer.registerPrompt(
-  'autocomplete',
-  require('inquirer-autocomplete-prompt')
-);
-
+const onCancel = () => process.exit();
+const initial = true;
 let spinner;
+
+console.log(yosay('Welcome to a Flarum extension generator\n\n- ReFlar'));
 
 new Promise((resolve, reject) => {
   spinner = ora('Starting...').start();
   filesystem.readdir(dir, (err, files = []) => {
     spinner.stop();
-    console.log(yosay('Welcome to a Flarum extension generator\n\n- ReFlar'));
     resolve((!err || err.code !== 'ENOENT') && files.length !== 0);
   });
 })
-  .then(exists =>
-    inquirer.prompt([
-      {
-        name: 'verify',
-        message: `Write to ${dir}:`,
-        type: 'confirm',
-      },
-      {
-        name: 'overwrite',
-        message: 'Directory not empty. Overwrite?',
-        type: 'confirm',
-        default: false,
-        when: answers => answers.verify && exists,
-      },
-    ])
+  .then(
+    exists =>
+      prompts(
+        [
+          {
+            name: 'verify',
+            type: 'confirm',
+            message: `Write to ${dir}`,
+            initial,
+          },
+          {
+            name: 'overwrite',
+            type: prev => prev && exists && 'confirm',
+            message: 'Directory not empty. Overwrite?',
+          },
+        ],
+        { onCancel }
+      )
   )
   .then(({ verify, overwrite }) => {
-    if (!verify) return process.exit();
+    if (!verify || overwrite === false) return process.exit();
 
     if (overwrite) fs.delete(dir);
-    else if (overwrite === false) process.exit();
 
     process.stdout.write('\n');
 
-    return inquirer.prompt([
-      {
-        name: 'packageName',
-        message: `Package ${reset.dim('(vendor/extension-name)')}:`,
-        validate: s =>
-          /^([a-zA-Z-]{2,})\/([a-zA-Z-]{2,})$/.test(s.trim()) ||
-          'Invalid package name format, vendor/extension-name',
-        filter: s => s.toLowerCase(),
-      },
-      {
-        name: 'packageDescription',
-        message: 'Package description:',
-      },
-      {
-        name: 'namespace',
-        message: `Package namespace ${reset.dim('(Vendor\\ExtensionName)')}:`,
-        validate: s =>
-          /^([a-zA-Z]+)\\([a-zA-Z]+)$/.test(s.trim()) ||
-          'Invalid namespace format, Vendor\\ExtensionName',
-        filter: str =>
-          str &&
-          str
-            .split('\\')
-            .map(s => s[0].toUpperCase() + s.slice(1))
-            .join('\\'),
-      },
-      {
-        name: 'authorName',
-        message: 'Author name:',
-      },
-      {
-        name: 'authorEmail',
-        message: 'Author email:',
-        validate: s =>
-          !s ||
-          /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-            s
-          ) ||
-          'Invalid email format',
-      },
-      {
-        name: 'license',
-        message: 'License:',
-        type: 'autocomplete',
-        source(o, s) {
-          const regex = new RegExp(s, 'i');
-          return Promise.resolve(
-            s ? licenseList.filter(l => regex.test(l)) : licenseList
-          );
+    return prompts(
+      [
+        {
+          name: 'packageName',
+          type: 'text',
+          message: `Package ${reset.dim('(vendor/extension-name)')}`,
+          validate: s =>
+            /^([a-zA-Z-]{2,})\/([a-zA-Z-]{2,})$/.test(s.trim()) ||
+            'Invalid package name format',
+          format: s => s.toLowerCase(),
         },
-      },
-      {
-        name: 'extensionName',
-        message: 'Extension name:',
-        validate: str => !!str.trim() || 'The extension name is required',
-        filter: str =>
-          str
-            .split(' ')
-            .map(s => (s.length > 3 ? s[0].toUpperCase() + s.slice(1) : s))
-            .join(' '),
-      },
-      {
-        name: 'admin',
-        message: 'Admin CSS & JS:',
-        type: 'confirm',
-      },
-      {
-        name: 'forum',
-        message: 'Forum CSS & JS:',
-        type: 'confirm',
-      },
-      {
-        name: 'useLocale',
-        message: 'Locale:',
-        type: 'confirm',
-      },
-      {
-        name: 'useJs',
-        message: 'Javascript',
-        type: 'confirm',
-        when: answers => answers.admin || answers.forum,
-      },
-      {
-        name: 'useCss',
-        message: 'CSS',
-        type: 'confirm',
-        when: answers => answers.admin || answers.forum,
-      },
-      {
-        name: 'resourcesFolder',
-        message: 'Move LESS & locale into resources folder?',
-        type: 'confirm',
-        when: answers => answers.useLocale || answers.useCss,
-      },
-    ]);
+        {
+          name: 'packageDescription',
+          type: 'text',
+          message: 'Package description',
+        },
+        {
+          name: 'namespace',
+          type: 'text',
+          message: `Package namespace ${reset.dim('(Vendor\\ExtensionName)')}`,
+          validate: s =>
+            /^([a-zA-Z]+)\\([a-zA-Z]+)$/.test(s.trim()) ||
+            'Invalid namespace format',
+          format: str =>
+            str &&
+            str
+              .split('\\')
+              .map(s => s[0].toUpperCase() + s.slice(1))
+              .join('\\'),
+        },
+        {
+          name: 'authorName',
+          type: 'text',
+          message: 'Author name',
+        },
+        {
+          name: 'authorEmail',
+          type: 'text',
+          message: 'Author email',
+          validate: s =>
+            !s ||
+            /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+              s
+            ) ||
+            'Invalid email format',
+        },
+        {
+          name: 'license',
+          type: 'autocomplete',
+          message: 'License',
+          choices: licenseList.map(e => ({ title: e })),
+        },
+        {
+          name: 'extensionName',
+          type: 'text',
+          message: 'Extension name',
+          validate: str => !!str.trim() || 'The extension name is required',
+          format: str =>
+            str
+              .split(' ')
+              .map(s => (s.length > 3 ? s[0].toUpperCase() + s.slice(1) : s))
+              .join(' '),
+        },
+        {
+          name: 'admin',
+          type: 'confirm',
+          message: 'Admin CSS & JS',
+          initial,
+        },
+        {
+          name: 'forum',
+          type: 'confirm',
+          message: 'Forum CSS & JS',
+          initial,
+        },
+        {
+          name: 'useLocale',
+          type: 'confirm',
+          message: 'Locale',
+          initial,
+        },
+        {
+          name: 'useJs',
+          type: (prev, values) => (values.admin || values.forum) && 'confirm',
+          message: 'Javascript',
+          initial,
+        },
+        {
+          name: 'useCss',
+          type: (prev, values) => (values.admin || values.forum) && 'confirm',
+          message: 'CSS',
+          initial,
+        },
+        {
+          name: 'resourcesFolder',
+          type: (prev, values) =>
+            (values.useLocale || values.useCss) && 'confirm',
+          message: 'Move LESS & locale into resources folder?',
+          initial,
+        },
+      ],
+      { onCancel }
+    );
   })
   .then(data => {
     process.stdout.write('\n');
@@ -163,9 +171,7 @@ new Promise((resolve, reject) => {
 
     const tpl = Object.assign(data, {
       packageNamespace: data.namespace.replace(/\\/, '\\\\'),
-      resourcesFolder: `__DIR__.'/../..${
-        data.resourcesFolder ? '/resources' : ''
-      }`,
+      resourcesFolder: data.resourcesFolder ? '/resources' : '',
     });
 
     const mv = (from, to) =>
@@ -183,17 +189,20 @@ new Promise((resolve, reject) => {
     if (!tpl.useCss) del('less');
     if (!tpl.admin) {
       del('less/admin.less');
-      del('js/admin');
+      del('js/src/admin');
+      del('js/admin.js');
     }
     if (!tpl.forum) {
       if (tpl.useCss) del('less/app.less');
-      if (tpl.useJs) del('js/forum');
+      if (tpl.useJs) {
+        del('js/src/forum');
+        del('js/forum.js');
+      }
     }
-    if (!tpl.admin && !tpl.forum && !tpl.useLocale) del('src');
     if (tpl.resourcesFolder) {
       if (tpl.useCss) {
         if (tpl.admin) mv('less/admin.less', 'resources/less/admin.less');
-        if (tpl.forum) mv('less/app.less', 'resources/less/app.less');
+        if (tpl.forum) mv('less/forum.less', 'resources/less/forum.less');
         del('less');
       }
       if (tpl.useLocale) mv('locale/**', 'resources/locale');
@@ -212,4 +221,7 @@ new Promise((resolve, reject) => {
   .then(() => {
     spinner.succeed(`Successfully set up Flarum extension in ${dir}`);
   })
-  .catch(err => spinner && spinner.fail(err));
+  .catch(err => {
+    if (spinner) spinner.fail();
+    console.error(err);
+  });
