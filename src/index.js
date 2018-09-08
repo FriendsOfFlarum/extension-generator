@@ -183,6 +183,7 @@ new Promise((resolve, reject) => {
 
     fs.copyTpl(boilerplate, dir, tpl);
     mv('gitignore', '.gitignore');
+    mv('gitattributes', '.gitattributes');
 
     if (!tpl.useLocale) del('locale');
     if (!tpl.useJs) del('js');
