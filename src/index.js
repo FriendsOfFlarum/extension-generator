@@ -35,24 +35,23 @@ new Promise((resolve, reject) => {
     resolve((!err || err.code !== 'ENOENT') && files.length !== 0);
   });
 })
-  .then(
-    exists =>
-      prompts(
-        [
-          {
-            name: 'verify',
-            type: 'confirm',
-            message: `Write to ${dir}`,
-            initial,
-          },
-          {
-            name: 'overwrite',
-            type: prev => prev && exists && 'confirm',
-            message: 'Directory not empty. Overwrite?',
-          },
-        ],
-        { onCancel }
-      )
+  .then(exists =>
+    prompts(
+      [
+        {
+          name: 'verify',
+          type: 'confirm',
+          message: `Write to ${dir}`,
+          initial,
+        },
+        {
+          name: 'overwrite',
+          type: prev => prev && exists && 'confirm',
+          message: 'Directory not empty. Overwrite?',
+        },
+      ],
+      { onCancel }
+    )
   )
   .then(({ verify, overwrite }) => {
     if (!verify || overwrite === false) return process.exit();
