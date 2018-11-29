@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+<a name="1.4.0"></a>
+# [1.4.0](https://github.com/ReFlar/extension-generator/compare/v1.3.0...v1.4.0) (2018-11-29)
+
+
+### Features
+
+* **generator:** update for beta 8 + switch to 'prompts' ([0551c85](https://github.com/ReFlar/extension-generator/commit/0551c85))
+
+
+
 <a name="1.3.0"></a>
 # [1.3.0](https://github.com/ReFlar/extension-generator/compare/v1.2.2...v1.3.0) (2018-07-12)
 
