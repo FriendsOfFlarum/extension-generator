@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.4.1"></a>
+## [1.4.1](https://github.com/ReFlar/extension-generator/compare/v1.4.0...v1.4.1) (2018-12-08)
+
+
+### Bug Fixes
+
+* **boilerplate:** fix incorrect flarum/core version requirement in composer.json ([34cc47c](https://github.com/ReFlar/extension-generator/commit/34cc47c))
+
+
+
 <a name="1.4.0"></a>
 # [1.4.0](https://github.com/ReFlar/extension-generator/compare/v1.3.0...v1.4.0) (2018-11-29)
 
