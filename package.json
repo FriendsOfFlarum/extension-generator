@@ -1,6 +1,6 @@
 {
   "name": "@reflar/create-flarum-extension",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "A Flarum extension generator by ReFlar",
   "main": "src/index.js",
   "bin": {

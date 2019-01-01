@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.4.2"></a>
+## [1.4.2](https://github.com/ReFlar/extension-generator/compare/v1.4.1...v1.4.2) (2019-01-01)
+
+
+### Bug Fixes
+
+* **boilerplate:** fix header comment author name not priting ([a22c528](https://github.com/ReFlar/extension-generator/commit/a22c528))
+* **boilerplate:** fix incorrect header comment formatting ([2e6d638](https://github.com/ReFlar/extension-generator/commit/2e6d638))
+* **dependencies:** update prompts + prettier ([7184ab1](https://github.com/ReFlar/extension-generator/commit/7184ab1))
+
+
+
 <a name="1.4.1"></a>
 ## [1.4.1](https://github.com/ReFlar/extension-generator/compare/v1.4.0...v1.4.1) (2018-12-08)
 
