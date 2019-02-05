@@ -171,6 +171,7 @@ new Promise((resolve, reject) => {
     const tpl = Object.assign(data, {
       packageNamespace: data.namespace.replace(/\\/, '\\\\'),
       resourcesFolder: data.resourcesFolder ? '/resources' : '',
+      year: new Date().getFullYear(),
     });
 
     const mv = (from, to) =>
