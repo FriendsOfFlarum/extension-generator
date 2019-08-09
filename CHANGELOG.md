@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.2](https://github.com/FriendsOfFlarum/extension-generator/compare/v1.5.1...v1.5.2) (2019-08-09)
+
+
+### Bug Fixes
+
+* **package:** update node requirement to >= 8 ([67a2ffa](https://github.com/FriendsOfFlarum/extension-generator/commit/67a2ffa))
+
 ### [1.5.1](https://github.com/FriendsOfFlarum/extension-generator/compare/v1.5.0...v1.5.1) (2019-08-09)
 
 
