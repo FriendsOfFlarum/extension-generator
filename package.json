@@ -30,7 +30,7 @@
     "url": "https://github.com/datitisev"
   },
   "engines": {
-    "node": ">=6.4.0"
+    "node": ">=8"
   },
   "dependencies": {
     "args": "^5.0.0",
