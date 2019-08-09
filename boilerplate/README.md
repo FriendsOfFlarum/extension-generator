@@ -16,7 +16,6 @@ composer require <%= packageName %>
 
 ```sh
 composer update <%= packageName %>
-php flarum cache:clear
 ```
 
 ### Links
