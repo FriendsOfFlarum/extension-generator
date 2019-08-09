@@ -1,6 +1,14 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [1.5.0](https://github.com/FriendsOfFlarum/extension-generator/compare/v1.4.3...v1.5.0) (2019-08-09)
+
+Moved from ReFlar (`@reflar/create-flarum-extension`) to FriendsOfFlarum (`@fof/create-flarum-extension`).
+
+### Bug Fixes
+
+* **boilerplate:** remove unnecessary code + simplify composer.json ([57b708e](https://github.com/FriendsOfFlarum/extension-generator/commit/57b708e))
 
 <a name="1.4.3"></a>
 ## [1.4.3](https://github.com/ReFlar/extension-generator/compare/v1.4.2...v1.4.3) (2019-02-05)
