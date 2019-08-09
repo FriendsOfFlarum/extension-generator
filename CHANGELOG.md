@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.3](https://github.com/FriendsOfFlarum/extension-generator/compare/v1.5.2...v1.5.3) (2019-08-09)
+
+
+### Bug Fixes
+
+* **boilerplate:** remove unneeded cache clear command ([3d25556](https://github.com/FriendsOfFlarum/extension-generator/commit/3d25556))
+
 ### [1.5.2](https://github.com/FriendsOfFlarum/extension-generator/compare/v1.5.1...v1.5.2) (2019-08-09)
 
 
