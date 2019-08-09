@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.1](https://github.com/FriendsOfFlarum/extension-generator/compare/v1.5.0...v1.5.1) (2019-08-09)
+
+
+### Bug Fixes
+
+* **package:** use [@friendsofflarum](https://github.com/friendsofflarum) instead of [@fof](https://github.com/fof), already taken ([9653a07](https://github.com/FriendsOfFlarum/extension-generator/commit/9653a07))
+
 ## [1.5.0](https://github.com/FriendsOfFlarum/extension-generator/compare/v1.4.3...v1.5.0) (2019-08-09)
 
 Moved from ReFlar (`@reflar/create-flarum-extension`) to FriendsOfFlarum (`@fof/create-flarum-extension`).
