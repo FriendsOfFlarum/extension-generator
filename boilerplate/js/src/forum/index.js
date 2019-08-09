@@ -1,5 +1,3 @@
-import app from 'flarum/app';
-
 app.initializers.add('<%= packageName %>', () => {
-  console.log('Hello, forum!');
+  console.log('[<%= packageName %>] Hello, forum!');
 });

@@ -1,6 +1,6 @@
 {
-  "name": "<%= packageName %>",
-  "description": "<%= packageDescription %>",
+  "name": "<%= packageName %>",<% if (packageDescription) { %>
+  "description": "<%= packageDescription %>",<% } %>
   "keywords": [
     "flarum"
   ],
@@ -9,13 +9,13 @@
   "require": {
     "flarum/core": "^0.1.0-beta.8"
   },
-  "authors": [
+  "authors": [<% if (authorName && authorEmail) { %>
     {
-      "name": "<%= authorName %>",
-      "email": "<%= authorEmail %>",
+      "name": "<%= authorName %>",<% if (authorEmail) { %>
+      "email": "<%= authorEmail %>",<% } %>
       "role": "Developer"
     }
-  ],
+  <% } %>],
   "autoload": {
     "psr-4": {
       "<%= packageNamespace %>\\": "src/"
