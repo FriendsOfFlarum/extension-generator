@@ -26,7 +26,7 @@ const onCancel = () => process.exit();
 const initial = true;
 let spinner;
 
-console.log(yosay('Welcome to a Flarum extension generator\n\n- ReFlar'));
+console.log(yosay('Welcome to a Flarum extension generator\n\n- FriendsOfFlarum'));
 
 new Promise((resolve, reject) => {
   spinner = ora('Starting...').start();

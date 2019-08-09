@@ -1,7 +1,7 @@
 {
-  "name": "@reflar/create-flarum-extension",
+  "name": "@fof/create-flarum-extension",
   "version": "1.4.3",
-  "description": "A Flarum extension generator by ReFlar",
+  "description": "A Flarum extension generator by FriendsOfFlarum",
   "main": "src/index.js",
   "bin": {
     "create-flarum-extension": "src/main",
@@ -13,13 +13,13 @@
     "generator",
     "extension-generator",
     "boilerplate",
-    "reflar",
+    "friendsofflarum",
     "flarum-extension"
   ],
-  "homepage": "https://github.com/ReFlar/extension-generator#readme",
-  "repository": "github:ReFlar/extension-generator",
+  "homepage": "https://github.com/FriendsOfFlarum/extension-generator#readme",
+  "repository": "github:FriendsOfFlarum/extension-generator",
   "bugs": {
-    "url": "https://github.com/ReFlar/extension-generator/issues"
+    "url": "https://github.com/FriendsOfFlarum/extension-generator/issues"
   },
   "scripts": {
     "lint": "prettier --single-quote --trailing-comma es5 --semi --write 'src/index.js'"
@@ -35,10 +35,10 @@
   "dependencies": {
     "args": "^5.0.0",
     "mem-fs": "^1.1.3",
-    "mem-fs-editor": "^5.1.0",
+    "mem-fs-editor": "^6.0.0",
     "ora": "^3.0.0",
     "prompts": "^2.0.1",
-    "spdx-license-list": "^5.0.0",
+    "spdx-license-list": "^6.1.0",
     "yosay": "^2.0.2"
   },
   "devDependencies": {
