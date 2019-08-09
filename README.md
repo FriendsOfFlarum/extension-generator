@@ -1,7 +1,7 @@
 # Create Flarum Extension by FriendsOfFlarum
 
-[![npm version](https://img.shields.io/npm/v/@fof/create-flarum-extension.svg)](https://www.npmjs.com/package/@fof/create-flarum-extension) ![node](https://img.shields.io/node/v/@fof/create-flarum-extension.svg)
-![npm downloads](https://img.shields.io/npm/dt/@fof/create-flarum-extension.svg) [![OpenCollective](https://img.shields.io/badge/opencollective-fof-blue.svg)](https://opencollective.com/fof/donate) [![Patreon](https://img.shields.io/badge/patreon-datitisev-f96854.svg?logo=patreon)](https://patreon.com/datitisev)
+[![npm version](https://img.shields.io/npm/v/@friendsofflarum/create-flarum-extension.svg)](https://www.npmjs.com/package/@friendsofflarum/create-flarum-extension) ![node](https://img.shields.io/node/v/@friendsofflarum/create-flarum-extension.svg)
+![npm downloads](https://img.shields.io/npm/dt/@friendsofflarum/create-flarum-extension.svg) [![OpenCollective](https://img.shields.io/badge/opencollective-fof-blue.svg)](https://opencollective.com/fof/donate) [![Patreon](https://img.shields.io/badge/patreon-datitisev-f96854.svg?logo=patreon)](https://patreon.com/datitisev)
 
 Create a Flarum extension from a boilerplate in minutes!
 
@@ -11,12 +11,12 @@ Create a Flarum extension from a boilerplate in minutes!
 
 Using `npx` (npx comes with npm 5.2+ and higher):
 ```sh
-npx @fof/create-flarum-extension [dir]
+npx @friendsofflarum/create-flarum-extension [dir]
 ```
 
 Normally:
 ```sh
-npm install -g @fof/create-flarum-extension
+npm install -g @friendsofflarum/create-flarum-extension
 create-flarum-extension [dir]
 ```
 
@@ -29,7 +29,7 @@ create-flarum-extension [dir]
 To create a new app, run a single command:
 
 ```
-npx @fof/create-flarum-extension my-extension
+npx @friendsofflarum/create-flarum-extension my-extension
 ```
 *([npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) comes with npm 5.2+ and higher, see [quick overview for older npm versions](#quick-overview))*
 
@@ -74,7 +74,7 @@ my-extension
 [<img src="https://opencollective.com/fof/donate/button@2x.png?color=blue" height="25" />](https://opencollective.com/fof/donate)
 [<img src="https://c5.patreon.com/external/logo/become_a_patron_button.png" height="25" />](https://patreon.com/datitisev)
 
-- [NPM](https://www.npmjs.com/package/@fof/create-flarum-extension)
+- [NPM](https://www.npmjs.com/package/@friendsofflarum/create-flarum-extension)
 - [GitHub](https://github.com/packages/FriendsOfFlarum/extension-generator)
 
 A utility by [FriendsOfFlarum](https://github.com/FriendsOfFlarum).
