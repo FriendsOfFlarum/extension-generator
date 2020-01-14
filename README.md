@@ -1,7 +1,7 @@
 # Create Flarum Extension by FriendsOfFlarum
 
 [![npm version](https://img.shields.io/npm/v/@friendsofflarum/create-flarum-extension.svg)](https://www.npmjs.com/package/@friendsofflarum/create-flarum-extension) ![node](https://img.shields.io/node/v/@friendsofflarum/create-flarum-extension.svg)
-![npm downloads](https://img.shields.io/npm/dt/@friendsofflarum/create-flarum-extension.svg) [![OpenCollective](https://img.shields.io/badge/opencollective-fof-blue.svg)](https://opencollective.com/fof/donate) [![Patreon](https://img.shields.io/badge/patreon-datitisev-f96854.svg?logo=patreon)](https://patreon.com/datitisev)
+![npm downloads](https://img.shields.io/npm/dt/@friendsofflarum/create-flarum-extension.svg) [![OpenCollective](https://img.shields.io/badge/opencollective-fof-blue.svg)](https://opencollective.com/fof/donate) [![Donate](https://img.shields.io/badge/donate-datitisev-important.svg)](https://datitisev.me/donate)
 
 Create a Flarum extension from a boilerplate in minutes!
 
@@ -39,20 +39,21 @@ Inside that directory, it will generate the initial project structure:
 ```
 my-extension
 ├── .gitignore
-├── bootstrap.php
+├── .gitattributes
 ├── composer.json
+├── extend.php
 ├── LICENSE.md
 ├── README.md
 ├── js
 │  ├── admin.js
 │  ├── forum.js
 │  ├── package.json
-│  ├── src
-│  │  ├── admin
-│  │  │  └── index.js
-│  │  └── forum
-│  │     └── index.js
-│  └── webpack.config.js
+│  ├── webpack.config.js
+│  └── src
+│     ├── admin
+│     │  └── index.js
+│     └── forum
+│        └── index.js
 └── resources
    ├── less
    │  ├── admin.less
@@ -75,6 +76,6 @@ my-extension
 [<img src="https://c5.patreon.com/external/logo/become_a_patron_button.png" height="25" />](https://patreon.com/datitisev)
 
 - [NPM](https://www.npmjs.com/package/@friendsofflarum/create-flarum-extension)
-- [GitHub](https://github.com/packages/FriendsOfFlarum/extension-generator)
+- [GitHub](https://github.com/FriendsOfFlarum/extension-generator)
 
 A utility by [FriendsOfFlarum](https://github.com/FriendsOfFlarum).
