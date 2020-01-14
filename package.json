@@ -1,6 +1,6 @@
 {
   "name": "@friendsofflarum/create-flarum-extension",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "description": "A Flarum extension generator by FriendsOfFlarum",
   "main": "src/index.js",
   "bin": {
