@@ -67,7 +67,7 @@ new Promise((resolve, reject) => {
           type: 'text',
           message: `Package ${reset.dim('(vendor/extension-name)')}`,
           validate: s =>
-            /^([a-zA-Z-]{2,})\/([a-zA-Z-]{2,})$/.test(s.trim()) ||
+            /^([0-9a-zA-Z-]{2,})\/([0-9a-zA-Z-]{2,})$/.test(s.trim()) ||
             'Invalid package name format',
           format: s => s.toLowerCase(),
         },
@@ -81,7 +81,7 @@ new Promise((resolve, reject) => {
           type: 'text',
           message: `Package namespace ${reset.dim('(Vendor\\ExtensionName)')}`,
           validate: s =>
-            /^([a-zA-Z]+)\\([a-zA-Z]+)$/.test(s.trim()) ||
+            /^([0-9a-zA-Z]+)\\([0-9a-zA-Z]+)$/.test(s.trim()) ||
             'Invalid namespace format',
           format: str =>
             str &&
