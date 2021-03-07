@@ -181,9 +181,7 @@ new Promise((resolve, reject) => {
     const del = f => fs.delete(path.resolve(dir, f));
     const boilerplate = path.resolve(__dirname, '../boilerplate/**');
 
-    fs.copyTpl(boilerplate, dir, tpl);
-    mv('gitignore', '.gitignore');
-    mv('gitattributes', '.gitattributes');
+    fs.copyTpl(boilerplate, dir, tpl, null, {globOptions: {dot: true}});
 
     if (!tpl.useLocale) del('locale');
     if (!tpl.useJs) del('js');
