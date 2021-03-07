@@ -39,9 +39,6 @@
         "color": ""
       }
     },
-    "flagrow": {
-      "discuss": ""
-    }
   },
   "scripts": {
     "test": [
